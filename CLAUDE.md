@@ -1,6 +1,6 @@
-# LLM Wiki 스타터 킷 — 미설치 상태
+# Bespoke LLM Wiki Starter — 미설치 상태
 
-> 이 폴더는 **아직 설치되지 않은** LLM Wiki 스타터 킷이다.
+> 이 폴더는 **아직 설치되지 않은** Bespoke LLM Wiki 스타터 킷이다.
 
 ## 이 상태에서의 규칙 (AI 필독)
 

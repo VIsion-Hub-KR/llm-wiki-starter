@@ -1,4 +1,4 @@
-# LLM Wiki 스타터 킷
+# Bespoke LLM Wiki Starter
 
 > AI가 유지·관리하는 지식 위키를 **당신에게 맞춰** 세팅해주는 스타터 킷입니다.
 > 다운로드하고 `/setup` 한 번이면, AI가 인터뷰를 통해 **당신만의 계층 구조**로 위키를 만들어줍니다. 소요 시간 약 15~20분.
@@ -18,16 +18,16 @@
 ## 명령 세 줄이면 끝
 
 ```bash
-git clone https://github.com/VIsion-Hub-KR/llm-wiki-starter.git ~/Documents/LLM-Wiki
-cd ~/Documents/LLM-Wiki && claude
+git clone https://github.com/VIsion-Hub-KR/bespoke-llm-wiki-starter.git ~/Documents/"Bespoke LLM Wiki"
+cd ~/Documents/"Bespoke LLM Wiki" && claude
 설치해줘        # 또는: /setup
 ```
 
-- 경로(`~/Documents/LLM-Wiki`)는 원하는 대로 바꿔도 됩니다 — 그 폴더가 위키가 살 집이 됩니다.
+- 경로(`~/Documents/Bespoke LLM Wiki`)는 원하는 대로 바꿔도 됩니다 — 그 폴더가 위키가 살 집이 됩니다.
 - AI가 던지는 인터뷰(정체성 → **좌표: 당신이 일을 나누는 방식** → 용도 → 소스 → 운영)에 답하면, 마지막에 Obsidian으로 이 폴더를 열어(Open folder as vault) 완성된 위키를 확인합니다.
-- 안내 페이지: https://llm-wiki-starter.vercel.app
+- 안내 페이지: https://bespoke-llm-wiki.vercel.app
 
-**준비물**: [Obsidian](https://obsidian.md)(무료 뷰어) · [Claude Code](https://claude.com/claude-code)(`npm install -g @anthropic-ai/claude-code`) · (선택) git — git이 없다면 [ZIP 다운로드](https://github.com/VIsion-Hub-KR/llm-wiki-starter/archive/refs/heads/master.zip) 후 압축 해제로 대체.
+**준비물**: [Obsidian](https://obsidian.md)(무료 뷰어) · [Claude Code](https://claude.com/claude-code)(`npm install -g @anthropic-ai/claude-code`) · (선택) git — git이 없다면 [ZIP 다운로드](https://github.com/VIsion-Hub-KR/bespoke-llm-wiki-starter/archive/refs/heads/master.zip) 후 압축 해제로 대체.
 
 설치가 끝나면 이 세 문장만 기억하세요:
 - **"이거 위키에 넣어줘"** (인제스트) · **"위키에서 OO 찾아줘"** (질의) · **"위키 건강 점검해줘"** (린트)

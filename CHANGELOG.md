@@ -28,3 +28,7 @@
   - frontmatter `summary` 키 신설 — index는 파생물(직접 수정 금지), 헌법 규칙 2·10 개정
   - /setup: build_index 실행·시크릿 훅 설치 단계 추가 · /ingest·/lint: 스크립트 우선 2단 구조
   - 미설치 상태에서 lint.py 실행 시 /setup 안내 가드
+
+## 0.2.1 (2026-07-26)
+
+- **브랜드명 확정: Bespoke LLM Wiki** — 저장소 bespoke-llm-wiki-starter로 개명(구 URL 자동 리다이렉트), 기본 클론 폴더 "Bespoke LLM Wiki", 랜딩 https://bespoke-llm-wiki.vercel.app (구 Vercel 프로젝트 제거)
