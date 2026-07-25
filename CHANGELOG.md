@@ -15,3 +15,7 @@
 ## 0.1.2 (2026-07-26)
 
 - 랜딩 페이지 v2 (AKM submit 페이지 디자인 시스템 이식: 스티키 헤더·테마 토글·스텝 서클·프라미스 박스) — Vercel 배포로 전환: https://llm-wiki-starter.vercel.app (GitHub Pages 서빙 중단, gh-pages 브랜치는 랜딩 소스 보관)
+
+## 0.1.3 (2026-07-26)
+
+- 랜딩 v3 — 비전허브 공식 브랜드 디자인 시스템(Noda Report) 적용: 남색 다크(#0a0e1c) + 브랜드 오렌지(#f4a36c) 액센트, Pretendard Variable + JetBrains Mono, 섹션 타이틀 컬러 변형(orange/green/cool), 다크 고정(테마 토글 제거)
