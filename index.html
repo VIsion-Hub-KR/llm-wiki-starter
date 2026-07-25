@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="light">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,74 +9,73 @@
     <meta property="og:site_name" content="LLM Wiki Starter">
     <meta property="og:title" content="LLM Wiki 스타터 킷 — 명령 세 줄이면 나만의 지식 위키">
     <meta property="og:description" content="킷 설치 → '설치해줘' → 맞춤 위키 완성. 15–20분, 무료, 당신의 환경에서.">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.0/index.min.css" />
     <style>
         :root {
-            --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Pretendard', 'Helvetica Neue', Arial, sans-serif;
-            --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Pretendard', 'Helvetica Neue', Arial, sans-serif;
-            --font-mono: ui-monospace, 'SF Mono', 'Menlo', 'Monaco', Consolas, monospace;
-            --green: #12463a; --green-soft: #f0f6f3;
-            --bg: #fbfbfa; --bg-elev: #ffffff;
-            --fg: #0a0d0b; --fg-muted: #4a544f; --fg-subtle: #8a938e;
-            --border: #e6e8e6; --border-strong: #d0d3d0;
-            --accent: var(--green); --accent-soft: var(--green-soft); --accent-on: #ffffff;
-            --section-px: clamp(24px, 5vw, 80px); --header-h: 56px; --max-w: 880px;
-        }
-        [data-theme="dark"] {
-            --bg: #07090a; --bg-elev: #0d1411; --fg: #f2f4f3; --fg-muted: #9aa39d; --fg-subtle: #626a66;
-            --border: #1a231f; --border-strong: #26302a;
-            --accent: #4fc79f; --accent-soft: #10201a; --accent-on: #06120d;
+            /* Noda Report 디자인 시스템 (DESIGN.md) */
+            --bg: #0a0e1c; --navy: #073967;
+            --panel: #11151c; --panel-2: #161b24; --panel-3: #1a2030;
+            --line: #242b37; --line-2: #2e3645;
+            --text: #e6e8ee; --text-2: #cfd3dc; --muted: #8a93a6; --faint: #5a6374;
+            --accent: #f4a36c; --accent-l: #f9c29a; --accent-d: #d9824b;
+            --accent-cool: #56b6c2; --accent-info: #6aa6ff; --pos: #5fb27a; --yellow: #ffcb47;
+            --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+            --section-px: clamp(24px, 5vw, 32px); --header-h: 60px; --max-w: 920px;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: var(--font-sans); background: var(--bg); color: var(--fg); line-height: 1.6; letter-spacing: -0.011em; -webkit-font-smoothing: antialiased; transition: background .3s, color .3s; }
+        body { font-family: var(--font-sans); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; word-break: keep-all; }
         a { color: inherit; text-decoration: none; }
-        .site-header { position: sticky; top: 0; z-index: 50; height: var(--header-h); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--section-px); background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
-        .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 15px; }
-        .brand-mark { width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--accent-on); display: grid; place-items: center; font-size: 13px; font-weight: 800; }
-        .header-actions { display: flex; align-items: center; gap: 8px; }
-        .nav-link { font-size: 13px; color: var(--fg-muted); margin-right: 8px; }
-        .nav-link:hover { color: var(--fg); }
-        .icon-btn { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: 50%; background: var(--bg-elev); color: var(--fg-muted); cursor: pointer; }
-        .icon-btn:hover { color: var(--fg); }
-        .icon-btn svg { width: 15px; height: 15px; }
-        main { max-width: var(--max-w); margin: 0 auto; padding: 56px var(--section-px) 80px; }
-        .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-        h1 { font-family: var(--font-display); font-size: clamp(30px, 5.4vw, 44px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; word-break: keep-all; }
-        .lede { font-size: 16px; color: var(--fg-muted); max-width: 62ch; word-break: keep-all; }
-        .lede b { color: var(--fg); }
-        .meta-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
-        .pill { font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--fg-muted); }
-        .pill.hl { background: var(--accent); color: var(--accent-on); border-color: transparent; }
-        section { margin-top: 56px; }
-        h2 { font-family: var(--font-display); font-size: 21px; font-weight: 750; letter-spacing: -0.02em; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
-        .stepnum { width: 30px; height: 30px; flex: none; display: grid; place-items: center; border-radius: 50%; background: var(--accent); color: var(--accent-on); font-size: 15px; font-weight: 800; }
-        .sec-sub { font-size: 14px; color: var(--fg-muted); margin-bottom: 18px; max-width: 68ch; word-break: keep-all; }
-        .codeblock { position: relative; background: #0d1411; border: 1px solid var(--border-strong); border-radius: 12px; padding: 16px 52px 16px 18px; margin: 12px 0; overflow-x: auto; }
-        [data-theme="dark"] .codeblock { background: #05100c; }
-        .codeblock code { font-family: var(--font-mono); font-size: 13px; color: #d9e4de; white-space: pre; }
-        .codeblock .cm { color: #6f8f83; }
-        .copy-btn { position: absolute; top: 10px; right: 10px; border: 1px solid #26302a; background: transparent; color: #9aa39d; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 5px 10px; cursor: pointer; }
-        .copy-btn:hover { color: #fff; border-color: #3a463f; }
-        .alt { font-size: 13px; color: var(--fg-subtle); margin-top: 8px; word-break: keep-all; }
-        .alt code { font-family: var(--font-mono); font-size: 12px; }
-        .alt a { color: var(--accent); font-weight: 700; }
-        .flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 18px; }
-        .flow div { border: 1px solid var(--border); border-radius: 10px; padding: 12px 12px; font-size: 12.5px; font-weight: 600; color: var(--fg-muted); background: var(--bg-elev); word-break: keep-all; }
-        .flow div b { display: block; color: var(--accent); font-size: 11px; margin-bottom: 3px; letter-spacing: .04em; }
-        .promise { border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent); background: var(--accent-soft); border-radius: 14px; padding: 22px 24px; font-size: 14px; }
-        .promise ul { margin: 10px 0 0 18px; display: flex; flex-direction: column; gap: 8px; color: var(--fg-muted); }
-        .promise b { color: var(--fg); }
-        .faq dt { font-weight: 700; font-size: 14.5px; margin-top: 18px; }
-        .faq dd { font-size: 14px; color: var(--fg-muted); margin-top: 5px; max-width: 70ch; word-break: keep-all; }
-        .faq a { color: var(--accent); font-weight: 700; }
-        .cta-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
-        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 999px; font-size: 14px; font-weight: 700; letter-spacing: -0.01em; transition: transform .15s; }
+        .site-header { position: sticky; top: 0; z-index: 50; height: var(--header-h); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--section-px); background: color-mix(in srgb, var(--bg) 84%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+        .brand { display: flex; align-items: center; gap: 10px; }
+        .brand-mark { width: 28px; height: 28px; border-radius: 6px; background: var(--navy); color: var(--accent); display: grid; place-items: center; font-size: 13px; font-weight: 800; border: 1px solid var(--line-2); }
+        .brand-name { font-size: 13px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); }
+        .nav-link { font-size: 14px; color: var(--muted); }
+        .nav-link:hover { color: var(--text); }
+        main { max-width: var(--max-w); margin: 0 auto; padding: 52px var(--section-px) 100px; }
+        .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+        h1 { font-size: clamp(34px, 6vw, 52px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.14; margin-bottom: 18px; color: var(--accent); }
+        h1 .white { color: var(--text); }
+        .lede { font-size: clamp(17px, 2.4vw, 21px); font-weight: 400; line-height: 1.6; color: var(--text-2); max-width: 62ch; }
+        .lede b { color: var(--text); font-weight: 700; }
+        .meta-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+        .badge { font-size: 13px; font-weight: 600; letter-spacing: .1em; padding: 6px 12px; border-radius: 4px; background: var(--panel-3); color: var(--accent); border: 1px solid var(--line); }
+        .badge.dim { color: var(--muted); }
+        section { margin-top: 80px; }
+        .section-title { font-size: clamp(24px, 4vw, 34px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.2; color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 12px; margin-bottom: 16px; display: flex; align-items: center; gap: 14px; }
+        .section-title.cool { color: var(--accent-cool); border-color: var(--accent-cool); }
+        .section-title.green { color: var(--pos); border-color: var(--pos); }
+        .stepnum { width: 34px; height: 34px; flex: none; display: grid; place-items: center; border-radius: 8px; background: var(--navy); color: var(--accent); font-size: 16px; font-weight: 800; font-family: var(--font-mono); border: 1px solid var(--line-2); }
+        .sec-sub { font-size: 15px; color: var(--muted); margin-bottom: 18px; max-width: 68ch; }
+        .sec-sub a, .alt a { color: var(--accent); font-weight: 700; }
+        .codeblock { position: relative; background: var(--panel); border: 1px solid var(--line-2); border-radius: 12px; padding: 18px 60px 18px 20px; margin: 14px 0; overflow-x: auto; }
+        .codeblock code { font-family: var(--font-mono); font-size: 14px; line-height: 1.5; color: var(--text-2); white-space: pre; }
+        .codeblock .cm { color: var(--faint); }
+        .copy-btn { position: absolute; top: 12px; right: 12px; border: 1px solid var(--line-2); background: var(--panel-3); color: var(--muted); border-radius: 6px; font-size: 11px; font-weight: 700; letter-spacing: .08em; padding: 5px 10px; cursor: pointer; font-family: var(--font-mono); }
+        .copy-btn:hover { color: var(--accent); border-color: var(--accent-d); }
+        .alt { font-size: 14px; color: var(--muted); margin-top: 10px; }
+        .alt code { font-family: var(--font-mono); font-size: 13px; color: var(--text-2); }
+        .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+        .flow div { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; font-size: 14px; font-weight: 600; color: var(--text-2); }
+        .flow div b { display: block; color: var(--accent); font-size: 12px; font-family: var(--font-mono); margin-bottom: 4px; letter-spacing: .12em; }
+        .insight-box { background: var(--panel-2); border: 1px solid var(--line-2); border-radius: 12px; padding: 24px 26px; font-size: 15px; color: var(--text-2); }
+        .insight-box ul { margin: 4px 0 0 18px; display: flex; flex-direction: column; gap: 10px; }
+        .insight-box b { color: var(--text); }
+        .faq dt { font-weight: 800; font-size: 16px; color: var(--text); margin-top: 22px; }
+        .faq dd { font-size: 15px; color: var(--muted); margin-top: 6px; max-width: 70ch; }
+        .faq a { color: var(--accent-cool); font-weight: 700; }
+        .cta-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 8px; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; transition: transform .15s, background .15s; }
         .btn:hover { transform: translateY(-1px); }
-        .btn-primary { background: var(--accent); color: var(--accent-on); }
-        .btn-outline { border: 1px solid var(--border-strong); color: var(--fg); }
-        .footer { padding: 40px var(--section-px) 56px; text-align: center; font-size: 12.5px; color: var(--fg-subtle); border-top: 1px solid var(--border); margin-top: 72px; }
-        .footer a { color: var(--fg-muted); }
+        .btn-primary { background: var(--accent); color: #0a0e1c; }
+        .btn-primary:hover { background: var(--accent-l); }
+        .btn-outline { border: 1px solid var(--line-2); color: var(--text-2); background: var(--panel); }
+        .footer { max-width: var(--max-w); margin: 0 auto; padding: 40px var(--section-px) 56px; text-align: center; font-size: 13px; color: var(--faint); border-top: 1px solid var(--line); margin-top: 80px; }
+        .footer a { color: var(--muted); }
+        @media (max-width: 720px) { .flow { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .flow { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -84,36 +83,33 @@
 <header class="site-header">
     <a class="brand" href="/">
         <span class="brand-mark">W</span>
-        <span>LLM Wiki Starter</span>
+        <span class="brand-name">LLM Wiki Starter</span>
     </a>
-    <div class="header-actions">
-        <a class="nav-link" href="https://github.com/VIsion-Hub-KR/llm-wiki-starter" target="_blank" rel="noopener">GitHub</a>
-        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"><svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button>
-    </div>
+    <a class="nav-link" href="https://github.com/VIsion-Hub-KR/llm-wiki-starter" target="_blank" rel="noopener">GitHub ↗</a>
 </header>
 
 <main>
     <div class="eyebrow">설치 안내</div>
-    <h1>명령 세 줄이면<br>나만의 LLM Wiki가 세팅됩니다.</h1>
+    <h1>명령 세 줄이면<br><span class="white">나만의 LLM Wiki가</span> 세팅됩니다.</h1>
     <p class="lede">
         AI가 유지·관리하는 지식 위키 — 설치는 <b>당신의 컴퓨터에서, 당신의 에이전트가</b> 수행합니다. 설치 인터뷰가 <b>당신이 일을 나누는 방식</b>을 묻고, 그 좌표계로 위키의 계층 구조를 만듭니다. 기성복 템플릿이 아니라 맞춤복입니다.
     </p>
     <div class="meta-pills">
-        <span class="pill hl">15–20분</span>
-        <span class="pill">무료</span>
-        <span class="pill">Claude Code</span>
-        <span class="pill">본인 환경에서 실행</span>
+        <span class="badge">15–20분</span>
+        <span class="badge dim">무료</span>
+        <span class="badge dim">Claude Code</span>
+        <span class="badge dim">본인 환경에서 실행</span>
     </div>
 
     <section>
-        <h2><span class="stepnum">1</span>킷 받기</h2>
-        <p class="sec-sub">위키가 살 폴더 위치까지 한 줄에 들어 있습니다. 경로(<code>~/Documents/LLM-Wiki</code>)는 원하는 대로 바꿔도 됩니다 — 명령 세 줄 중 첫 줄입니다. (요구사항: <a href="https://obsidian.md" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;">Obsidian</a> · Claude Code)</p>
+        <h2 class="section-title"><span class="stepnum">1</span>킷 받기</h2>
+        <p class="sec-sub">위키가 살 폴더 위치까지 한 줄에 들어 있습니다. 경로(<code style="font-family:var(--font-mono);font-size:13px;">~/Documents/LLM-Wiki</code>)는 원하는 대로 바꿔도 됩니다 — 명령 세 줄 중 첫 줄입니다. (요구사항: <a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian</a> · Claude Code)</p>
         <div class="codeblock"><button class="copy-btn" data-copy="git clone https://github.com/VIsion-Hub-KR/llm-wiki-starter.git ~/Documents/LLM-Wiki">COPY</button><code>git clone https://github.com/VIsion-Hub-KR/llm-wiki-starter.git ~/Documents/LLM-Wiki</code></div>
         <p class="alt">git이 없다면: <a href="https://github.com/VIsion-Hub-KR/llm-wiki-starter/archive/refs/heads/master.zip">ZIP 다운로드</a> 후 원하는 위치에 압축 해제. 킷 내용물은 <a href="https://github.com/VIsion-Hub-KR/llm-wiki-starter" target="_blank" rel="noopener">GitHub</a>에서 전부 열람 가능합니다.</p>
     </section>
 
     <section>
-        <h2><span class="stepnum">2</span>실행</h2>
+        <h2 class="section-title"><span class="stepnum">2</span>실행</h2>
         <p class="sec-sub">폴더에 들어가 Claude Code를 켜고 한 마디 — 여기까지가 명령 세 줄의 전부입니다:</p>
         <div class="codeblock"><button class="copy-btn" data-copy="cd ~/Documents/LLM-Wiki &amp;&amp; claude">COPY</button><code>cd ~/Documents/LLM-Wiki && claude
 설치해줘        <span class="cm"># 또는: /setup</span></code></div>
@@ -129,7 +125,7 @@
     </section>
 
     <section>
-        <h2><span class="stepnum">3</span>설치 후엔 세 문장</h2>
+        <h2 class="section-title"><span class="stepnum">3</span>설치 후엔 세 문장</h2>
         <p class="sec-sub">위키의 유지보수는 전부 AI의 일입니다. 당신은 좋은 자료를 던지고, 좋은 질문을 던지면 됩니다:</p>
         <div class="codeblock"><button class="copy-btn" data-copy="이거 위키에 넣어줘">COPY</button><code>이거 위키에 넣어줘    <span class="cm"># 인제스트 — 자료를 소화해 위키에 축적</span>
 위키에서 OO 찾아줘    <span class="cm"># 질의 — 쌓인 지식으로 답변</span>
@@ -137,19 +133,19 @@
     </section>
 
     <section>
-        <h2>이 킷의 약속</h2>
-        <div class="promise">
+        <h2 class="section-title green">이 킷의 약속</h2>
+        <div class="insight-box">
             <ul>
-                <li><b>원본은 불변</b>: 수집된 자료의 원문은 절대 수정되지 않고, 모든 지식은 원 출처까지 추적 가능한 사슬로 연결됩니다.</li>
-                <li><b>목적 있는 수집만</b>: "왜 수집했는지" 답할 수 없는 자료는 위키에 들어가지 않습니다 (Gold In Gold Out).</li>
-                <li><b>폴더가 아니라 좌표</b>: 지식은 여러 영역에 걸칩니다. 좌표(태그)와 워크스테이션 맵이 폴더 대신 분류를 맡아, 역할·팀이 늘어도 폴더 재편 없이 확장됩니다.</li>
-                <li><b>전부 열람 가능</b>: 스킬·템플릿·규칙 문서가 모두 마크다운으로 공개돼 있습니다. 숨긴 동작은 없습니다.</li>
+                <li><b>원본은 불변</b> — 수집된 자료의 원문은 절대 수정되지 않고, 모든 지식은 원 출처까지 추적 가능한 사슬로 연결됩니다.</li>
+                <li><b>목적 있는 수집만</b> — "왜 수집했는지" 답할 수 없는 자료는 위키에 들어가지 않습니다 (Gold In Gold Out).</li>
+                <li><b>폴더가 아니라 좌표</b> — 지식은 여러 영역에 걸칩니다. 좌표(태그)와 워크스테이션 맵이 폴더 대신 분류를 맡아, 역할·팀이 늘어도 폴더 재편 없이 확장됩니다.</li>
+                <li><b>전부 열람 가능</b> — 스킬·템플릿·규칙 문서가 모두 마크다운으로 공개돼 있습니다. 숨긴 동작은 없습니다.</li>
             </ul>
         </div>
     </section>
 
     <section>
-        <h2>FAQ</h2>
+        <h2 class="section-title cool">FAQ</h2>
         <dl class="faq">
             <dt>옵시디언을 써본 적이 없어요.</dt>
             <dd>괜찮습니다. 옵시디언은 "폴더 속 마크다운 파일을 예쁘게 보여주는 뷰어"로만 쓰면 됩니다. 정리·연결·목차 관리는 전부 AI가 합니다.</dd>
@@ -172,17 +168,9 @@
 </footer>
 
 <script>
-(function() {
-    'use strict';
-    const $ = s => document.querySelector(s);
-    function applyTheme(t) { document.documentElement.dataset.theme = t; localStorage.setItem('lws-theme', t);
-        $('#themeIcon').innerHTML = t === 'dark' ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>' : '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>'; }
-    $('#themeToggle').addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light'));
-    applyTheme(localStorage.getItem('lws-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
-    document.querySelectorAll('.copy-btn').forEach(b => b.addEventListener('click', async () => {
-        try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = '✓'; setTimeout(() => b.textContent = 'COPY', 1200); } catch {}
-    }));
-})();
+document.querySelectorAll('.copy-btn').forEach(b => b.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = '✓'; setTimeout(() => b.textContent = 'COPY', 1200); } catch {}
+}));
 </script>
 </body>
 </html>
