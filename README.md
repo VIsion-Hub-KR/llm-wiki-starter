@@ -20,6 +20,7 @@
 1. **Obsidian** (무료) — https://obsidian.md — 위키를 눈으로 보는 뷰어입니다.
 2. **Claude Code** — `npm install -g @anthropic-ai/claude-code` 또는 데스크톱 앱 — 위키를 관리하는 AI입니다.
 3. **이 킷** — zip을 풀었거나 클론한 이 폴더가 위키가 살 집이 됩니다.
+4. (선택) **git** — 변경 이력·백업을 원하면. 없어도 설치는 됩니다 (인터뷰에서 "백업 없음" 선택).
 
 ## 사용법 (3단계)
 

@@ -36,6 +36,7 @@
 - 수치는 항상 **시점 병기**. 기존 기록과 충돌하면 최신 소스 우선 + log.md에 남긴다.
 - 산출물 문서의 버전 기록은 문서 맨 아래 (표: 버전|일자|내용).
 - 백업: {{backup_mode}}
+{{library_note}}
 - 공통 작업 규칙은 `Operating_Rules.md`(§0에서 강제 로드)를 따른다.
 
 ## 5. 폴더 구조
@@ -50,6 +51,7 @@
 │   ├── WS — Home.md       ← 위키 탐색 루트 (도메인 렌즈 진입점)
 │   ├── Who am I.md        ← 사용자 핵심 맥락 — 컴파일 1차 렌즈의 기준
 │   ├── index.md · log.md  ← 전체 목차 · 변경 이력
+│   └── ingest-ledger.md   ← 인제스트 중복 장부 (첫 인제스트 때 생성)
 ├── 01. Inbox/           ← 수집 대기소 (맥락 한 줄 필수)
 ├── 10. Raw Sources/     ← 불변 원본 — 절대 수정 금지
 {{raw_slots}}
@@ -93,7 +95,7 @@
 ```yaml
 ---
 title:
-type: source | concept | entity | guide | map | query
+type: source | concept | entity | guide | map | query   # (26. Questions 개설 시 research-question 추가)
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 domains: []                # 업무 좌표(다중) — Domain_Registry 등재 값만
