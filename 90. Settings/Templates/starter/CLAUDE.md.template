@@ -68,7 +68,7 @@
 ## 6. 위키 헌법 (카파시 핵심 규칙 10)
 
 1. **10. Raw Sources/는 절대 수정 금지** (불변 원본)
-2. wiki 페이지 생성/삭제 시 **00. Core/index.md 필수 업데이트**
+2. wiki 페이지 생성/삭제 시 **index·WS 맵 재생성** — `python3 "90. Settings/Scripts/build_index.py"` (index.md는 파생물 — 직접 수정 금지, 원천은 각 페이지 frontmatter `summary`)
 3. 모든 오퍼레이션마다 **00. Core/log.md에 기록**
 4. 내부 참조는 **wikilink** (`[[ ]]`) 형식
 5. 모든 wiki 페이지에 **YAML frontmatter**
@@ -76,7 +76,7 @@
 7. 소스 요약은 **사실만**, 해석은 개념 페이지에서
 8. 질의 시 **WS 맵·index 먼저**, 10. Raw Sources/는 마지막 수단
 9. **새 페이지보다 기존 페이지 업데이트 우선**
-10. index 항목은 한 줄, **120자 이내**
+10. 페이지 `summary`는 한 줄, **120자 이내** (index 항목의 원천 — 생성기가 그대로 씀)
 
 **추가 원칙**:
 - **Gold In Gold Out** — 모든 인제스트에 "왜 수집했나" 답이 반드시 붙는다. 답할 수 없으면 사용자에게 묻는다.
@@ -87,9 +87,9 @@
 ## 7. 표준 워크플로우
 
 - **수집**: 01. Inbox/에 자료를 던져둔다 — `- [ ] <제목/URL> — 왜: <한 줄 맥락>`
-- **인제스트** (`/ingest`): 출처 감지 → Raw 저장(불완전하면 보강) → 23. Sources 요약(사실만) → Concepts/Entities 갱신 → `domains` 확정 + WS 맵 등재 → index·log 기록 → Inbox 제거
+- **인제스트** (`/ingest`): 출처 감지 → Raw 저장(불완전하면 보강) → 23. Sources 요약(사실만·`summary` 필수) → Concepts/Entities 갱신 → `domains` 확정 → `build_index.py`(index·WS 맵 재생성) + `lint.py` → log 기록 → Inbox 제거
 - **질의** (`/query`): 도메인 판별 → WS 맵 → index 보조 → 페이지 → (부족할 때만) Raw. 재사용 가치 있는 답은 30. Queries/에 저장
-- **린트** (`/lint`): 깨진 링크·index 정합·frontmatter·고아 페이지·모순·도메인 좌표 정합을 점검·수정하고 log에 기록
+- **린트** (`/lint`): `python3 "90. Settings/Scripts/lint.py"`(기계 검사: 링크·frontmatter·index·WS 맵·domains·Raw 해시) 먼저 → AI는 모순·중복·낡은 정보 판단만. index 수정은 편집이 아니라 `build_index.py` 재실행
 
 **frontmatter 스키마** (wiki 페이지 공통):
 ```yaml
@@ -99,6 +99,7 @@ type: source | concept | entity | guide | map | query   # (26. Questions 개설 
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 domains: []                # 업무 좌표(다중) — Domain_Registry 등재 값만
+summary: ""                # 한 줄 요약(120자 이내) — index·WS 맵 파생 생성의 원천 (필수)
 source_raw: (source 타입일 때 Raw 경로)
 origin_url: (원 출처 URL)
 why_collected: (Gold In Gold Out 답변)

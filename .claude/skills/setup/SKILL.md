@@ -98,8 +98,8 @@ description: LLM Wiki 최초 설치 인터뷰 — 5단계(정체성→좌표→�
 2. `10. Raw Sources/` 해당 슬롯 폴더 + `70. Output/71. Drafts/` + 선택 채널 폴더 생성 (백업 (a)·(b)면 각 빈 폴더에 `.gitkeep` 포함 — git은 빈 폴더를 추적하지 않는다)
 3. 템플릿 치환 생성: `00. Core/Who am I.md` ← Who-am-I.template · `90. Settings/Domain_Registry.md` ← Domain_Registry.template · `00. Core/WS — Home.md` ← WS-Home.template · `20. Wiki/25. Maps/WS — {허브}.md`(브랜치당 1장) ← WS-Hub.template · `20. Wiki/25. Maps/WS — {도메인}.md`(도메인당 1장) ← WS-Leaf.template
 4. 루트 `CLAUDE.md`를 CLAUDE.md.template 치환본으로 **교체** (미설치 안내문 제거됨) + `Operating_Rules.md`를 템플릿 폴더에서 루트로 **복사**
-5. 생성한 WS 맵들을 index.md의 "25. Maps" 섹션에 등재(레지스트리·Operating_Rules는 시스템 파일이라 index에 올리지 않는다), log에 기록
-6. git 처리 (5a단계 답변대로): (a)·(b)면 `git init`(이미 있으면 유지) + **identity 확인**(`git config user.name`이 비어 있으면 이름·이메일을 물어 `git config user.name/user.email` 설정 후 진행) + `.gitignore` 확인 + 전체 커밋. (a)는 사용자에게 **별도 터미널에서 `gh auth login`** 실행을 안내 → 완료 확인 후 `gh repo create <이름> --private --source . --push` (**반드시 --private** — 개인 지식이다). gh 미설치면 설치 안내 또는 (b)로 폴백. (c)면 생략.
+5. `python3 "90. Settings/Scripts/build_index.py"` 실행 — index·WS 맵이 frontmatter에서 파생 생성된다 (수동 등재 없음), log에 기록
+6. git 처리 (5a단계 답변대로): (a)·(b)면 `git init`(이미 있으면 유지) + **identity 확인**(`git config user.name`이 비어 있으면 이름·이메일을 물어 `git config user.name/user.email` 설정 후 진행) + **시크릿 훅 설치**(`.git/hooks/pre-commit`이 `90. Settings/Scripts/precommit_guard.sh`를 호출하도록 생성 + `chmod +x`) + `.gitignore` 확인 + 전체 커밋. 이후 백업은 `90. Settings/Scripts/backup.sh "<요약>"` 사용을 안내. (a)는 사용자에게 **별도 터미널에서 `gh auth login`** 실행을 안내 → 완료 확인 후 `gh repo create <이름> --private --source . --push` (**반드시 --private** — 개인 지식이다). gh 미설치면 설치 안내 또는 (b)로 폴백. (c)면 생략.
 7. **치환 검증**: 생성·치환된 파일에서 `{{` 잔존을 검색한다 — 1건이라도 남아 있으면 실패로 간주하고 채운다. (`90. Settings/Templates/starter/`와 `.claude/`는 검사 제외 — 템플릿·스킬 원본의 `{{`는 확장 절차 재사용을 위한 **의도된 잔존**이다.)
 
 ## 마무리

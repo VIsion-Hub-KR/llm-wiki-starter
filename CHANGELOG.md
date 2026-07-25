@@ -19,3 +19,12 @@
 ## 0.1.3 (2026-07-26)
 
 - 랜딩 v3 — 비전허브 공식 브랜드 디자인 시스템(Noda Report) 적용: 남색 다크(#0a0e1c) + 브랜드 오렌지(#f4a36c) 액센트, Pretendard Variable + JetBrains Mono, 섹션 타이틀 컬러 변형(orange/green/cool), 다크 고정(테마 토글 제거)
+
+## 0.2.0 (2026-07-26)
+
+- **기계 게이트 이식** (디렉터 볼트 v1.15 검증분) — "정답이 하나인 검사는 코드, 판단은 LLM"
+  - `90. Settings/Scripts/`: lint.py(기계 린터+Raw 해시 불변 검증), build_index.py(index·WS 맵 파생 생성), ledger.py(장부 관리), notion_scan.py(외부 도서관 스캔), backup.sh, precommit_guard.sh(시크릿·대용량 차단), wikilib.py
+  - `90. Settings/Tests/`: 인제스트 회귀 픽스처 + verify_ingest.py
+  - frontmatter `summary` 키 신설 — index는 파생물(직접 수정 금지), 헌법 규칙 2·10 개정
+  - /setup: build_index 실행·시크릿 훅 설치 단계 추가 · /ingest·/lint: 스크립트 우선 2단 구조
+  - 미설치 상태에서 lint.py 실행 시 /setup 안내 가드
