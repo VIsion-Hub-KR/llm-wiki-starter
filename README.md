@@ -25,7 +25,7 @@ cd ~/Documents/LLM-Wiki && claude
 
 - 경로(`~/Documents/LLM-Wiki`)는 원하는 대로 바꿔도 됩니다 — 그 폴더가 위키가 살 집이 됩니다.
 - AI가 던지는 인터뷰(정체성 → **좌표: 당신이 일을 나누는 방식** → 용도 → 소스 → 운영)에 답하면, 마지막에 Obsidian으로 이 폴더를 열어(Open folder as vault) 완성된 위키를 확인합니다.
-- 안내 페이지: https://vision-hub-kr.github.io/llm-wiki-starter/
+- 안내 페이지: https://llm-wiki-starter.vercel.app
 
 **준비물**: [Obsidian](https://obsidian.md)(무료 뷰어) · [Claude Code](https://claude.com/claude-code)(`npm install -g @anthropic-ai/claude-code`) · (선택) git — git이 없다면 [ZIP 다운로드](https://github.com/VIsion-Hub-KR/llm-wiki-starter/archive/refs/heads/master.zip) 후 압축 해제로 대체.
 

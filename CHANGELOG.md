@@ -11,3 +11,7 @@
 
 - 세 줄 온보딩 — README를 "clone 한 줄(목적지 경로 포함) → claude → 설치해줘" 패턴으로 개편
 - 랜딩 페이지 공개 (gh-pages): https://vision-hub-kr.github.io/llm-wiki-starter/
+
+## 0.1.2 (2026-07-26)
+
+- 랜딩 페이지 v2 (AKM submit 페이지 디자인 시스템 이식: 스티키 헤더·테마 토글·스텝 서클·프라미스 박스) — Vercel 배포로 전환: https://llm-wiki-starter.vercel.app (GitHub Pages 서빙 중단, gh-pages 브랜치는 랜딩 소스 보관)
