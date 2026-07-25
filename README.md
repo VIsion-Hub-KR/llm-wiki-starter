@@ -15,18 +15,19 @@
 
 이 킷은 일반 템플릿과 다릅니다. 설치 인터뷰가 **당신이 일을 나누는 방식(역할·영역)을 묻고, 그 좌표계로 위키의 계층 구조를 만듭니다** — 기성복이 아니라 맞춤복입니다.
 
-## 준비물 (3가지)
+## 명령 세 줄이면 끝
 
-1. **Obsidian** (무료) — https://obsidian.md — 위키를 눈으로 보는 뷰어입니다.
-2. **Claude Code** — `npm install -g @anthropic-ai/claude-code` 또는 데스크톱 앱 — 위키를 관리하는 AI입니다.
-3. **이 킷** — zip을 풀었거나 클론한 이 폴더가 위키가 살 집이 됩니다.
-4. (선택) **git** — 변경 이력·백업을 원하면. 없어도 설치는 됩니다 (인터뷰에서 "백업 없음" 선택).
+```bash
+git clone https://github.com/VIsion-Hub-KR/llm-wiki-starter.git ~/Documents/LLM-Wiki
+cd ~/Documents/LLM-Wiki && claude
+설치해줘        # 또는: /setup
+```
 
-## 사용법 (3단계)
+- 경로(`~/Documents/LLM-Wiki`)는 원하는 대로 바꿔도 됩니다 — 그 폴더가 위키가 살 집이 됩니다.
+- AI가 던지는 인터뷰(정체성 → **좌표: 당신이 일을 나누는 방식** → 용도 → 소스 → 운영)에 답하면, 마지막에 Obsidian으로 이 폴더를 열어(Open folder as vault) 완성된 위키를 확인합니다.
+- 안내 페이지: https://vision-hub-kr.github.io/llm-wiki-starter/
 
-1. 터미널에서 이 폴더로 이동해 `claude` 를 실행합니다.
-2. `/setup` 을 입력합니다.
-3. AI가 던지는 질문에 답하면 끝. 마지막에 Obsidian으로 이 폴더를 열면(Open folder as vault) 완성된 위키가 보입니다.
+**준비물**: [Obsidian](https://obsidian.md)(무료 뷰어) · [Claude Code](https://claude.com/claude-code)(`npm install -g @anthropic-ai/claude-code`) · (선택) git — git이 없다면 [ZIP 다운로드](https://github.com/VIsion-Hub-KR/llm-wiki-starter/archive/refs/heads/master.zip) 후 압축 해제로 대체.
 
 설치가 끝나면 이 세 문장만 기억하세요:
 - **"이거 위키에 넣어줘"** (인제스트) · **"위키에서 OO 찾아줘"** (질의) · **"위키 건강 점검해줘"** (린트)
