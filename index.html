@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LLM Wiki 스타터 킷 — 명령 세 줄이면 나만의 지식 위키</title>
+<meta name="description" content="AI가 유지·관리하는 지식 위키를 당신에게 맞춰 세팅합니다. 설치 인터뷰가 당신이 일을 나누는 방식을 묻고, 그 좌표계로 위키의 계층 구조를 만듭니다.">
+<style>
+  :root{--ink:#141414;--sub:#555;--line:#e5e2dc;--bg:#faf9f6;--code:#101312;--codetxt:#e8f0ea;--accent:#0d3b2e}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+  .wrap{max-width:820px;margin:0 auto;padding:56px 24px 80px}
+  .eyebrow{font-size:13px;letter-spacing:.12em;color:var(--sub);margin-bottom:18px}
+  h1{font-size:clamp(30px,6vw,46px);line-height:1.25;font-weight:800;margin-bottom:20px;word-break:keep-all}
+  .lede{font-size:17px;color:var(--sub);max-width:620px;word-break:keep-all}
+  .lede b{color:var(--ink)}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 10px}
+  .badge{font-size:13px;padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:#fff}
+  .badge.dark{background:var(--accent);color:#fff;border-color:var(--accent)}
+  section{margin-top:56px}
+  .stepnum{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font-size:14px;font-weight:700;margin-right:10px;vertical-align:2px}
+  h2{font-size:22px;font-weight:700;margin-bottom:12px}
+  p.note{color:var(--sub);font-size:15px;margin-bottom:14px;word-break:keep-all}
+  .codebox{position:relative;background:var(--code);color:var(--codetxt);border-radius:10px;padding:20px 96px 20px 22px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14.5px;line-height:1.9;overflow-x:auto;white-space:pre}
+  .codebox .cmt{color:#7fa08f}
+  .copy{position:absolute;top:12px;right:12px;background:#2a2f2c;color:#dfe7e2;border:0;border-radius:6px;padding:7px 14px;font-size:12px;letter-spacing:.06em;cursor:pointer}
+  .copy:hover{background:#3a413d}
+  .fallback{font-size:13.5px;color:var(--sub);margin-top:10px}
+  .fallback a{color:var(--accent)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:18px}
+  .card{border:1px solid var(--line);background:#fff;border-radius:10px;padding:14px 16px}
+  .card .no{font-size:12px;color:var(--sub);letter-spacing:.08em}
+  .card .t{font-size:14.5px;font-weight:600;margin-top:4px;word-break:keep-all}
+  .fine{font-size:13.5px;color:var(--sub);margin-top:16px;word-break:keep-all}
+  details{border-top:1px solid var(--line);padding:16px 4px}
+  details:last-of-type{border-bottom:1px solid var(--line)}
+  summary{font-weight:600;cursor:pointer;font-size:15.5px}
+  details p{margin-top:10px;color:var(--sub);font-size:14.5px;word-break:keep-all}
+  footer{margin-top:70px;font-size:13px;color:var(--sub);word-break:keep-all}
+  footer a{color:var(--accent)}
+  @media (prefers-color-scheme: dark){
+    :root{--ink:#ecebe8;--sub:#a3a19c;--line:#33322f;--bg:#151513;--code:#0b0d0c;--codetxt:#dfe9e2}
+    .badge{background:#1e1e1c}.card{background:#1b1b19}.copy{background:#26302b}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">LLM WIKI 스타터 킷</div>
+  <h1>명령 세 줄이면<br>나만의 LLM Wiki가 세팅됩니다.</h1>
+  <p class="lede">AI가 유지·관리하는 지식 위키 — 설치 인터뷰가 <b>당신이 일을 나누는 방식</b>을 묻고, 그 좌표계로 위키의 계층 구조를 만듭니다. 기성복 템플릿이 아니라 맞춤복입니다.</p>
+
+  <div class="badges">
+    <span class="badge dark">15–20분</span>
+    <span class="badge">무료</span>
+    <span class="badge">Claude Code</span>
+    <span class="badge">내 컴퓨터에서 실행</span>
+  </div>
+
+  <section>
+    <h2><span class="stepnum">1</span>킷 받기</h2>
+    <p class="note">위키가 살 폴더 위치까지 한 줄에 들어 있습니다. 경로(<code>~/Documents/LLM-Wiki</code>)는 원하는 대로 바꿔도 됩니다 — 명령 세 줄 중 첫 줄입니다.</p>
+    <div class="codebox"><button class="copy" data-t="git clone https://github.com/VIsion-Hub-KR/llm-wiki-starter.git ~/Documents/LLM-Wiki">COPY</button>git clone https://github.com/VIsion-Hub-KR/llm-wiki-starter.git ~/Documents/LLM-Wiki</div>
+    <p class="fallback">git이 없다면: <a href="https://github.com/VIsion-Hub-KR/llm-wiki-starter/archive/refs/heads/master.zip">ZIP 다운로드</a> 후 원하는 위치에 압축 해제. 킷 내용물은 <a href="https://github.com/VIsion-Hub-KR/llm-wiki-starter">GitHub</a>에서 전부 열람 가능합니다.</p>
+  </section>
+
+  <section>
+    <h2><span class="stepnum">2</span>실행</h2>
+    <p class="note">폴더에 들어가 Claude Code를 켜고 한 마디 — 여기까지가 명령 세 줄의 전부입니다:</p>
+    <div class="codebox"><button class="copy" data-t="cd ~/Documents/LLM-Wiki &amp;&amp; claude">COPY</button>cd ~/Documents/LLM-Wiki && claude
+설치해줘   <span class="cmt"># 또는: /setup</span></div>
+    <div class="grid">
+      <div class="card"><div class="no">01</div><div class="t">정체성 인터뷰</div></div>
+      <div class="card"><div class="no">02</div><div class="t">좌표 — 일을 나누는 방식</div></div>
+      <div class="card"><div class="no">03</div><div class="t">용도·발행 채널</div></div>
+      <div class="card"><div class="no">04</div><div class="t">소스 습관</div></div>
+      <div class="card"><div class="no">05</div><div class="t">운영·백업</div></div>
+      <div class="card"><div class="no">06</div><div class="t">위키 생성 + 첫 인제스트</div></div>
+    </div>
+    <p class="fine">기존 노션·옵시디언 시스템이 있다면 인터뷰가 그것을 판독해 좌표를 뽑아냅니다. 끝나면 Obsidian으로 폴더를 열어(Open folder as vault) 완성된 위키를 확인하세요.</p>
+  </section>
+
+  <section>
+    <h2>설치 후엔 세 문장이면 됩니다</h2>
+    <div class="codebox"><button class="copy" data-t="이거 위키에 넣어줘">COPY</button>이거 위키에 넣어줘   <span class="cmt"># 인제스트</span>
+위키에서 OO 찾아줘   <span class="cmt"># 질의</span>
+위키 건강 점검해줘   <span class="cmt"># 린트</span></div>
+  </section>
+
+  <section>
+    <h2>자주 묻는 질문</h2>
+    <details><summary>옵시디언을 써본 적이 없어요.</summary><p>괜찮습니다. 옵시디언은 "폴더 속 마크다운 파일을 예쁘게 보여주는 뷰어"로만 쓰면 됩니다. 정리·연결·목차 관리는 전부 AI가 합니다.</p></details>
+    <details><summary>이미 노션·에버노트에 자료가 많아요.</summary><p>그 도구는 "원본 도서관"으로 계속 쓰고, 이 위키는 그중 중요한 것만 소화하는 층으로 두면 됩니다. 설치 인터뷰에서 알려주시면 기존 시스템을 판독해 당신의 좌표계를 뽑는 데도 씁니다.</p></details>
+    <details><summary>자료를 다 옮겨야 하나요?</summary><p>아니요. 전부 옮기는 순간 위키는 저품질 복사본이 됩니다. "왜 수집했는지" 답할 수 있는 것만 넣는 게 이 시스템의 핵심 규칙(Gold In Gold Out)입니다.</p></details>
+    <details><summary>왜 폴더 분류가 아니라 '좌표'인가요?</summary><p>지식은 보통 여러 영역에 걸칩니다. 폴더는 한 곳만 허락하지만, 좌표(태그)와 워크스테이션 맵은 여러 영역에서 같은 지식을 재사용하게 해줍니다. 나중에 역할·팀이 늘어도 폴더 재편 없이 좌표 한 줄만 추가하면 됩니다.</p></details>
+  </section>
+
+  <footer>
+    원류: 이현석(비전허브·노션다움)의 LLM Wiki 운영 볼트에서 검증된 구조 — 안드레 카파시의 LLM Wiki 패턴 기반.<br>
+    킷 v0.1 · <a href="https://github.com/VIsion-Hub-KR/llm-wiki-starter">GitHub</a>
+  </footer>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{
+  await navigator.clipboard.writeText(b.dataset.t);b.textContent='COPIED';setTimeout(()=>b.textContent='COPY',1200);
+}));
+</script>
+</body>
+</html>
